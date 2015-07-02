@@ -1,5 +1,5 @@
 # tfs-build-tools
-A PowerShell module to interact with the build service of Team Foundation Server (TFS). At this moment the module is focused on creating, retrieving and/or editing build definitions.
+A PowerShell module to interact with the build service of Team Foundation Server (TFS). At this moment the module is focused on creating, retrieving and/or editing build definitions. If you experience any issues please log them under issues. Feel free to submit pull request to expand the functionality of this module.
 
 ##Available commandlets
 - Clear-WorkspaceMappings
