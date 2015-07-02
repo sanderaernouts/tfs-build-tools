@@ -11,8 +11,6 @@ function Set-BuildServer
     param(
         [Parameter(Mandatory=$True,Position=1)][string] $Collection
     )
-
-    loadDependencies
       
 	$uri = [URI]$Collection
     $tpc = [Microsoft.TeamFoundation.Client.TfsTeamProjectCollectionFactory]::GetTeamProjectCollection($uri)
@@ -80,17 +78,6 @@ function verifyBuildServerIsSet
     }
 } 
 
-function loadDependencies 
-{
-    #load types
-    add-type -Path "$($env:VS120COMNTOOLS)..\IDE\ReferenceAssemblies\v2.0\Microsoft.TeamFoundation.Build.Workflow.dll"
-    
-    #load assemblies
-    [void][System.Reflection.Assembly]::LoadWithPartialName("Microsoft.TeamFoundation.Client") 
-    [void][System.Reflection.Assembly]::LoadWithPartialName("Microsoft.TeamFoundation.Build.Client") 
-    [void][System.Reflection.Assembly]::LoadWithPartialName("Microsoft.TeamFoundation.Build.Workflow")
-    [void][System.Reflection.Assembly]::LoadWithPartialName("Microsoft.TeamFoundation.Build.Common") 
-}
 
 function getAllBuildControllers 
 {
