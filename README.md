@@ -69,6 +69,8 @@ This module uses a Azure PowerShell like approach for setting the build server (
 
 ##Example
 ```powershell
+Import-Module TfsBuildTools
+
 #First set the buildserver to be used by this module by passing in the collection URL and request to use the ByPassRules flag
 Set-BuildServer "https://your.tfs.server/tfs/yourcollection"
 
