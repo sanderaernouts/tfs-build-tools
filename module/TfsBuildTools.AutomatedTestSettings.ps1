@@ -133,7 +133,6 @@ Function Set-AutomatedTestSettings {
         };
         [Microsoft.TeamFoundation.Build.Common.BuildParameter]$buildParameter = New-Object Microsoft.TeamFoundation.Build.Common.BuildParameter -ArgumentList @($params)
         
-        Write-Host $buildParameter
         $buildParameters += $buildParameter;
     
     }
