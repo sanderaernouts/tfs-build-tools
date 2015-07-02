@@ -1,4 +1,14 @@
-﻿Function Clear-WorkspaceMappings 
+﻿<#
+  .SYNOPSIS    
+    Clears all workspace mappings form the specified build definition
+  .PARAMETER BuildDefinition 
+    The builddefintion for which to clear the workspace mappings
+  .EXAMPLE
+    Set-BuildServer -Collection "https://tfs.example.com/tfs/myCollection"
+    $definition = Get-BuildDefinition -TeamProject "MyProject" -Name "MyNewBuild"
+    Clear-WorkspaceMapping -BuildDefinition $definition
+#>
+Function Clear-WorkspaceMappings 
 {
     Param(
         [Parameter(Mandatory=$true)][Microsoft.TeamFoundation.Build.Client.IBuildDefinition] $BuildDefinition
@@ -7,6 +17,21 @@
     $buildDefinition.Workspace.Mappings.Clear()
 }
 
+<#
+  .SYNOPSIS    
+    Sets the workspace mapping for the specified build definition
+  .PARAMETER BuildDefinition 
+    The builddefintion for to set the workspace mappings
+  .PARAMETER Mappings
+    An array of workspace mappings. Mappings can be created using New-WorkspaceMapping or retrieved using Get-WorkspaceMappings 
+  .EXAMPLE
+    Set-BuildServer -Collection "https://tfs.example.com/tfs/myCollection"
+    $definition = Get-BuildDefinition -TeamProject "MyProject" -Name "MyNewBuild"
+    $mappings = @()
+    $mappings += New-WorkspaceMapping -ServerItem "$/path/to/item" -LocalItem "C:\ws\user\local\path\to\item" -Type "Map"
+    
+    Set-WorkspaceMapping -BuildDefinition $definition -Mappings $mappings
+#>
 Function Set-WorkspaceMappings 
 {
     Param(
@@ -37,6 +62,19 @@ Function Set-WorkspaceMappings
     };
 }
 
+<#
+  .SYNOPSIS    
+    Gets the workspace mapping for the specified build definition
+  .PARAMETER BuildDefinition 
+    The builddefintion for to get the workspace mappings
+  .EXAMPLE
+    Set-BuildServer -Collection "https://tfs.example.com/tfs/myCollection"
+    $definition = Get-BuildDefinition -TeamProject "MyProject" -Name "MyNewBuild"
+    $mappings = @()
+    $mappings += New-WorkspaceMapping -ServerItem "$/path/to/item" -LocalItem "C:\ws\user\local\path\to\item" -Type "Map"
+    
+    Set-WorkspaceMapping -BuildDefinition $definition -Mappings $mappings
+#>
 Function Get-WorkspaceMappings
 {
     Param(
@@ -53,6 +91,18 @@ Function Get-WorkspaceMappings
     return [array]$mappings;
 }
 
+<#
+  .SYNOPSIS    
+    Creates a single new workspace mapping
+  .PARAMETER ServerItem 
+    The server path to the item, for example $/path/to/item
+  .PARAMETER LocalItem 
+    The local path to the item, for example c:\ws\user\path\to\item
+  .PARAMETER Type
+  .EXAMPLE
+    $mappings = @()
+    $mappings += New-WorkspaceMapping -ServerItem "$/path/to/item" -LocalItem "C:\ws\user\local\path\to\item" -Type "Map"
+#>
 Function New-WorkspaceMapping {
     Param(
         [string] $ServerItem,
