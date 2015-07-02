@@ -76,7 +76,7 @@ Set-BuildServer "https://your.tfs.server/tfs/yourcollection"
 
 #Enable code coverage for all build settings
 Get-BuildDefinition -TeamProject "MyTeamProject" | % {
-  $settings = New-AutomatedTestSettings -HasTestSettings -TypeRunSettings "EnableCodeCoverage"
+  $settings = New-AutomatedTestSettings -HasTestSettings -TypeRunSettings "CodeCoverageEnabled"
   Set-AdvancedTestSettings -BuildDefinition $_ -AdvancedTestSettings $settings
   Save-BuildDefinition -BuildDefinition $_
 }
