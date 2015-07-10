@@ -99,7 +99,7 @@ function getFirstBuildController
         [Parameter(Mandatory=$true)]$buildControllers
     )
     Write-Verbose "Found $($buildControllers.Count) controllers, selecting first controller in list"
-    $buildController = $result[0];
+    $buildController = $buildControllers[0];
     Write-Verbose "Selected $($buildController.Name)"
 
     return $buildController

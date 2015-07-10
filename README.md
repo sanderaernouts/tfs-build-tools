@@ -74,7 +74,7 @@ Import-Module TfsBuildTools
 #First set the buildserver to be used by this module by passing in the collection URL and request to use the ByPassRules flag
 Set-BuildServer "https://your.tfs.server/tfs/yourcollection"
 
-#Enable code coverage for all build settings
+#Enable code coverage for all build definitions
 Get-BuildDefinition -TeamProject "MyTeamProject" | % {
   $settings = New-AutomatedTestSettings -HasTestSettings -TypeRunSettings "CodeCoverageEnabled"
   Set-AdvancedTestSettings -BuildDefinition $_ -AdvancedTestSettings $settings
