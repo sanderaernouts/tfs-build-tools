@@ -3,7 +3,7 @@
   .SYNOPSIS    
     Creates a new list of automated test settings with 1 entry. None of the parameters are required, if no parameters are specified the default settings will be returned
   .PARAMETER AssemblyFileSpec
-  The assembly file spec determing which assemblies will be loaded as tests, default is "**\\*test*.dll;**\\*test*.appx"
+  The assembly file spec determing which assemblies will be loaded as tests, default is "**\*test*.dll;**\*test*.appx"
   .PARAMETER RunSettingsFileName
   The name of the run settings file, default is $null
   .PARAMETER TestCaseFilter
@@ -29,7 +29,7 @@
 Function New-AutomatedTestSettings 
 {
     Param(
-        [string]$AssemblyFileSpec = "**\\*test*.dll;**\\*test*.appx",
+        [string]$AssemblyFileSpec = "**\*test*.dll;**\*test*.appx",
         [string]$RunSettingsFileName = $null,
         [string]$TestCaseFilter=[string]::Empty,
         [string]$ServerRunSettingsFile=[string]::Empty,
@@ -46,9 +46,9 @@ Function New-AutomatedTestSettings
         "RunSettingsFileName"= $RunSettingsFileName; 
         "TestCaseFilter"=$TestCaseFilter; 
         "RunSettingsForTestRun"= [PSCustomObject]@{ 
+            "HasRunSettingsFile"= if($HasRunSettingsFile){$true}else{$false}; 
             "ServerRunSettingsFile"= $ServerRunSettingsFile; 
             "TypeRunSettings"= $TypeRunSettings; 
-            "HasRunSettingsFile"= if($HasRunSettingsFile){$true}else{$false};  
         };
         "HasRunSettingsFile"= if($HasRunSettingsFile){$true}else{$false}; ; 
         "HasTestCaseFilter"= ($TestCaseFilter -ne [string]::Empty); 
@@ -121,9 +121,9 @@ Function Set-AutomatedTestSettings {
             "RunSettingsFileName"=$setting.RunSettingsFileName;
             "TestCaseFilter"=$setting.TestCaseFilter;
             "RunSettingsForTestRun"= @{ 
+                "HasRunSettingsFile"=$setting.RunSettingsForTestRun.HasRunSettingsFile;
                 "ServerRunSettingsFile"=$setting.RunSettingsForTestRun.ServerRunSettingsFile; 
                 "TypeRunSettings"=$setting.RunSettingsForTestRun.TypeRunSettings; 
-                "HasRunSettingsFile"=$setting.RunSettingsForTestRun.HasRunSettingsFile; 
             };
             "HasRunSettingsFile"=$setting.HasRunSettingsFile; 
             "HasTestCaseFilter"=$setting.HasTestCaseFilter; 
