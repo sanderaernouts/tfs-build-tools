@@ -81,3 +81,4 @@ Get-BuildDefinition -TeamProject "MyTeamProject" | % {
   Save-BuildDefinition -BuildDefinition $_
 }
 ```
+See the [examples folder](https://github.com/sanderaernouts/tfs-build-tools/tree/master/examples) for more example scripts.
