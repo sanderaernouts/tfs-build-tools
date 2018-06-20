@@ -1,7 +1,7 @@
 # tfs-build-tools
 A PowerShell module to interact with the build service of Team Foundation Server (TFS). At this moment the module is focused on creating, retrieving and/or editing build definitions. If you experience any issues please log them under issues. Feel free to submit pull request to expand the functionality of this module.
 
-##Available commandlets
+## Available commandlets
 - Clear-WorkspaceMappings
 - Get-AdvancedBuildSettings
 - Get-AdvancedTestSettings
@@ -32,17 +32,17 @@ A PowerShell module to interact with the build service of Team Foundation Server
 - Test-BuildDefinition
 - Test-ProcessParameter
 
-##Installation
-###Dependencies
+## Installation
+### Dependencies
 * Visual Studio Team Explorer 2013
 
-###Steps
+### Steps
 Go to https://github.com/sanderaernouts/tfs-build-tools/releases and download latest release of the TfsWorkItemTools.zip archive. Unzip the archive and run the install.ps1 script. This will place necesary files in your "%USERPROFILE%\Documents\WindowsPowerShell\Modules" folder.
 
-##Uninstalation
+## Uninstalation
 Remove the TfBuildTools folder from the following location "%USERPROFILE%\Documents\WindowsPowerShell\Modules"
 
-##Usage
+## Usage
 Importing the module into your script:
 ```powershell
 Import-Module -Name TfsBuildTools
@@ -67,7 +67,7 @@ Get-Command -Module TfsBuildTools | Get-Help -Full
 
 This module uses a Azure PowerShell like approach for setting the build server (similar behaviour as [Set-AzureSubscription](https://msdn.microsoft.com/en-us/library/dn495189.aspx)). Before you can use most of the commands in this module you will have to set the build server. It is stored as a private module variable and used by the other cmdlets to prevent the need to pass the build server into each and every cmdlet.
 
-##Example
+## Example
 ```powershell
 Import-Module TfsBuildTools
 
